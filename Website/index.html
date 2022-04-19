@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Webpage Design</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">AHAR(আহার)</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="About.html">ABOUT</a></li>
+                    <li><a href="Services.html">SERVICE</a></li>
+                    <li><a href="Signup.html">SIGNUP</a></li>
+                    <li><a href="Contact.html">CONTACT</a></li>
+                    
+                </ul>
+            </div>
+
+        </div> 
+        <div class="content">
+            <h1>A Food Donating <br><span>Mobile</span> <br>Application</h1>
+            <p class="par">Our Food Donation application “আহার” is a mission to end hunger and no wasting <br> of food to make a hungry-free world and aiming
+                <br>to bring about transparency, clarity, and swiftness in the process of donation.</p>
+
+                <button class="cn"><a href="Services.html">FOR MORE</a></button>
+
+                <div class="form">
+                    <h2>Login Here</h2>
+                    <input type="email" name="email" id="username" placeholder="Enter Email Here">
+                    <input type="password" name="" id="password" placeholder="Enter Password Here">
+                    <button type="submit" class="btnn" onclick="loginUser(event)">Login</button>
+
+                    <p class="link">Forget your password?<br>
+                    <div class="link"><a href="forgetpassword.html"> Click here </a></div>  
+                
+                    <p class="link">Don't have an account<br>
+                    <a href="#" onclick="toSignup(event)">Sign up </a> here</a></p>
+                    <div class=" link "><a href="#">Log in with</a></div>
+
+                    <div class="icons">
+                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+                    </div>
+
+                </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script>
+        const form = document.getElementById('login-form')
+
+        async function loginUser(event){
+            event.preventDefault()
+            const username=document.getElementById('username')
+            const password=document.getElementById('password')
+
+            try {
+            const res = await axios.post('https://localhost:44398/api/authenticate/login', { username: username.value, password: password.value });
+            console.log(res.data); 
+            // For saving token to the local storage 
+            localStorage.setItem('token', res.data.token); 
+            const token = localStorage.getItem('token'); 
+            console.log({ tokenFromStorage: token }); 
+            location.href = 'home.html';
+            } catch (err) {
+                console.log(err); 
+            } 
+        }
+
+
+            async function toSignup(event){    
+            location.href = 'Signup.html';
+        } 
+
+        form.addEventListener('submit', loginUser)
+    </script>
+</body>
+</html>
