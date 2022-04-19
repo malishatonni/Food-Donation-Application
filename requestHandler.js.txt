@@ -1,0 +1,124 @@
+  const token = localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+
+const form = document.getElementById('login-form')
+
+            async function loginUser(event){
+                event.preventDefault()
+                const username=document.getElementById('username')
+                const password=document.getElementById('password')
+
+                try {
+                const res = await axios.post('https://localhost:44398/api/authenticate/login', { username: username.value, password: password.value });
+                console.log(res.data); 
+                // For saving token to the local storage 
+                localStorage.setItem('token', res.data.token); 
+                const token = localStorage.getItem('token'); 
+                console.log({ tokenFromStorage: token }); 
+                location.href = 'home.html';
+                } catch (err) {
+                    console.log(err); 
+                } 
+            }
+
+
+                async function toSignup(event){    
+                location.href = 'Signup.html';
+            } 
+
+
+		async function signupUser(event){
+                    event.preventDefault()
+                    const username=document.getElementById('username')
+                    const email=document.getElementById('email')
+                    const fullname=document.getElementById('fullname')
+                    const password=document.getElementById('password')
+    
+                    try {
+                    const res = await axios.post('https://localhost:44398/api/authenticate/register', { username: username.value,email:email.value,fullname:fullname.value, password: password.value });
+                    console.log(res.data);
+
+                    if (res.data.status === 'Success') {
+                        location.href = 'Login.html';
+                    }
+
+                    } catch (err) {
+                        console.log(err); 
+                    } 
+                } 
+
+
+	async function signupAdmin(event){
+                    event.preventDefault()
+                    const username=document.getElementById('username')
+                    const email=document.getElementById('email')
+                    const fullname=document.getElementById('fullname')
+                    const password=document.getElementById('password')
+		    const lon=document.getElementById('lon')
+		    const lat=document.getElementById('lat')
+    
+                    try {
+                    const res = await axios.post('https://localhost:44398/api/authenticate/register', { username: username.value,email:email.value,fullname:fullname.value, password: password.value,lon:lon.value,lat:lat.value });
+                    console.log(res.data);
+
+                    if (res.data.status === 'Success') {
+                        location.href = 'Login.html';
+                    }
+
+                    } catch (err) {
+                        console.log(err); 
+                    } 
+                } 
+
+async function AcceptReq(event){
+                    event.preventDefault()
+                    const donationId=document.getElementById('donId')
+    
+                    try {
+                    const res = await axios.post('https://localhost:44398/api/request/accept', { donationid:'donId' });
+                    console.log(res.data);
+
+                    if (res.data.status === 'Success') {
+                        location.href = 'home.html';
+                    }
+
+                    } catch (err) {
+                        console.log(err); 
+                    } 
+                } 
+
+async function RejectReq(event){
+                    event.preventDefault()
+                    const donationId=document.getElementById('donId')
+    
+                    try {
+                    const res = await axios.post('https://localhost:44398/api/request/reject', { donationid:'donId' });
+                    console.log(res.data);
+
+                    if (res.data.status === 'Success') {
+                        location.href = 'home.html';
+                    }
+
+                    } catch (err) {
+                        console.log(err); 
+                    } 
+                } 
+
+async function CompleteReq(event){
+                    event.preventDefault()
+                    const donationId=document.getElementById('donId')
+    
+                    try {
+                    const res = await axios.post('https://localhost:44398/api/request/complete', { donationid:'donId' });
+                    console.log(res.data);
+
+                    if (res.data.status === 'Success') {
+                        location.href = 'home.html';
+                    }
+
+                    } catch (err) {
+                        console.log(err); 
+                    } 
+                } 
+
