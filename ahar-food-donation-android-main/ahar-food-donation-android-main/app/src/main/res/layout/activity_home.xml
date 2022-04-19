@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/layoutRV"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_margin="12dp"
+        android:id="@+id/layoutLocationInputLL"
+        >
+
+        <EditText
+            android:id="@+id/searchOrgET"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:ems="3"
+            android:hint="Search Organization Name"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:id="@+id/searchLocationIV"
+            android:src="@drawable/ic_baseline_search_24"
+            android:layout_margin="3dp"
+            android:clickable="true"
+            android:tint="#00F8E0"
+            >
+        </ImageView>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:id="@+id/getLocationIV"
+            android:src="@drawable/ic_baseline_edit_location_24"
+            android:layout_margin="3dp"
+            android:clickable="true"
+            android:tint="#00FFE6"
+
+            >
+        </ImageView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:id="@+id/layoutLocationDisplayLL"
+        android:layout_below="@+id/layoutLocationInputLL"
+        >
+        <TextView
+            android:id="@+id/showLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Location"
+            android:textSize="24sp"
+
+
+            />
+        <Button
+            android:id="@+id/btnGetLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get Location" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            android:id="@+id/layoutSliderLL"
+            android:layout_below="@+id/layoutLocationDisplayLL">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:layout_margin="7dp"
+                android:text="Ogranizations"
+                android:id="@+id/btnOrganizations"
+                android:textColor="#00FFE6"
+                android:backgroundTint="@color/white"
+
+                >
+
+            </Button>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:layout_margin="7dp"
+                android:text="Donations"
+                android:id="@+id/btnDonations"
+                android:textColor="#00FFE6"
+                android:backgroundTint="@color/white"
+                >
+
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutLocationDisplayLL"
+        android:id="@+id/recyclerview"
+        android:visibility="visible"
+
+>
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layoutLocationDisplayLL"
+        android:visibility="gone"
+        android:id="@+id/secondView"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="SecondView"
+
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
