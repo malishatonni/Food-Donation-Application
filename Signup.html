@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type=text/css href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="main">
+    <center>
+       <!-- <fieldset>
+    <div class="sign-up-page ">
+        <h1 class="white"><legend><i class="fa fa-user-circle"></i>Sign up Here</legend></h1>
+            <form id="signup-form">
+                <input type="email" class="input-box" placeholder="Email" id="email" style="border-width: 3px; height: 26px;">
+                <input type="username" class="input-box" placeholder="Username" id="username"  style="border-width: 3px;height: 26px;">
+                <input type="Fullname" class="input-box" placeholder="Fullname" id="fullname"  style="border-width: 3px;height: 26px;">
+                <input type="password" class="input-box" placeholder="Password" id="password"  style="border-width: 3px;height: 26px;">
+                <br>
+                <p class="white"><span><input type="checkbox"></span> agree to the terms and policy</p>
+                <button type="submit" class="signup-btn button-primary">Sign up</button>
+                <hr>
+                <p class="or white">OR</p>
+                <button type="button" class="google-btn button-primary">Log in with Google</button>  -->
+        
+                <fieldset>
+                    
+                    <legend><h1 class="white"><i class="fa fa-user-circle"></i>Sign up Here</h1></legend>
+                    <form id="signup-form">
+                    <div class="heading">Email</div>
+                    <input type="email" class="input-box box_size" placeholder="Email" id="email"  required>
+                    
+                    <div class="heading">Username</div>
+                    <input type="username" class="input-box box_size" placeholder="Username" id="username" required>
+                    
+                    <div class="heading">Full Name</div>
+                    <input type="Fullname" class="input-box box_size" placeholder="Fullname" id="fullname" required>
+                    
+                    <div class="heading">Password</div>
+                    <input type="password" class="input-box box_size" placeholder="Password" id="password" required>
+                    
+                    <p class="white text_size"><span><input type="checkbox"></span> agree to the terms and policy</p>
+                    <br> 
+                    <button type="submit" class="signup-btn button-primary">Sign up</button>
+                    <br>
+                    <br>
+                    <hr>
+                    <br>
+                    <p class="or white text_size">OR</p>
+                    <br>
+                    <button type="button" class="google-btn button-primary">Log in with Google</button>
+    
+            </form>
+          </fieldset>
+        
+            <script>
+                const form = document.getElementById('signup-form')
+    
+                async function signupUser(event){
+                    event.preventDefault()
+                    const username=document.getElementById('username')
+                    const email=document.getElementById('email')
+                    const fullname=document.getElementById('fullname')
+                    const password=document.getElementById('password')
+    
+                    try {
+                    const res = await axios.post('https://localhost:44398/api/authenticate/register', { username: username.value,email:email.value,fullname:fullname.value, password: password.value });
+                    console.log(res.data);
+
+                    if (res.data.status === 'Success') {
+                        location.href = 'Login.html';
+                    }
+
+                    } catch (err) {
+                        console.log(err); 
+                    } 
+                } 
+    
+                form.addEventListener('submit', signupUser)
+            </script>
+            
+           <!-- </fieldset> -->
+    </center>
+</body>
+</html>
